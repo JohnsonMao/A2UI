@@ -14,8 +14,13 @@
  * limitations under the License.
  */
 
-export * from './A2uiSurface';
-export * from './adapter';
+import { render, screen } from '@testing-library/react';
+import { describe, it, expect } from 'vitest';
+import App from './App';
 
-// Export basic catalog components directly for 3P developers
-export * from './catalog/basic';
+describe('App Smoke Test', () => {
+  it('renders without crashing and shows MESSAGES header', () => {
+    render(<App />);
+    expect(screen.getByText('MESSAGES')).toBeDefined();
+  });
+});
